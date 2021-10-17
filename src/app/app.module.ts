@@ -3,14 +3,20 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { ShowCounterComponent } from './components/show-counter.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { EditCounterComponent } from './components/edit-counter.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ShowCounterComponent,
+    EditCounterComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
