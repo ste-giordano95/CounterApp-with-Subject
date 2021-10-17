@@ -1,24 +1,30 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CounterService {
-  private counter:number = 0;
 
-  constructor() { }
+  private counterSub!: BehaviorSubject<number>;
 
-  public increase(num:number = 1):number{
-    return this.counter += num;
+  public counter$!: Observable<number>;
+
+  constructor() {
+    this.counterSub = new BehaviorSubject<number>(0);
+    this.counter$ = this.counterSub.asObservable();
   }
 
-  public decrease(num:number = 1):number{
-    const val:number = this.counter -= num;
-    return val < 1 ? this.counter : this.counter = val;
+  public getCount() {
+    return this.counter$;
   }
 
-  public getCount():number{
-    return this.counter;
+  public increase(num: number = 1): void {
+    this.counterSub.next(this.counterSub.value + num);
+
   }
 
+  public decrease(num: number = 1): void {
+    this.counterSub.next(this.counterSub.value - num);
+  }
 }

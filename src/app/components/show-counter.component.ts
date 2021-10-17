@@ -7,7 +7,7 @@ import { CounterService } from '../services/counter.service';
    <div class="d-flex flex-column align-items-center">
     <h1>Counter App</h1>
     
-    <h2>{{counter.getCount()}}</h2>
+    <h2>{{counter.getCount() | async}}</h2>
     
     </div>
   `,
